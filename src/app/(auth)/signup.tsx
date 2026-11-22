@@ -38,7 +38,7 @@ export default function Signup() {
       ? "Enter a valid email address, like name@example.com."
       : undefined;
   const missingPasswordRequirements = [
-    { met: [...password].length >= 6, label: "at least 6 characters" },
+    { met: [...password].length >= 8, label: "at least 8 characters" },
     { met: /\p{Lu}/u.test(password), label: "an uppercase letter" },
     { met: /\p{Ll}/u.test(password), label: "a lowercase letter" },
     {
@@ -71,8 +71,13 @@ export default function Signup() {
 
     try {
       await signup(trimmedName, trimmedEmail, password, role);
-    } catch {
-      setSignupError("We couldn't create your account. Please try again.");
+    } catch (error) {
+      // Show actual Supabase errors on login and signup
+      setSignupError(
+        error instanceof Error
+          ? error.message
+          : "Unable to create your account.",
+      );
     } finally {
       submitting.current = false;
       setLoading(false);

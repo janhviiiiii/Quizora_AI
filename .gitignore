@@ -1,6 +1,10 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-# dependencies
+# ==========================================
+# Quizora AI - Git Ignore
+# React Native + Expo + Supabase
+# ==========================================
+
+# Dependencies
 node_modules/
 
 # Expo
@@ -9,35 +13,102 @@ dist/
 web-build/
 expo-env.d.ts
 
-# Native
+# Generated native folders
+/ios/
+/android/
+
+# Native build files and credentials
 .kotlin/
 *.orig.*
 *.jks
+*.keystore
 *.p8
 *.p12
 *.key
 *.mobileprovision
+*.pem
 
 # Metro
 .metro-health-check*
 
-# debug
+# Debug logs
+*.log
 npm-debug.*
 yarn-debug.*
 yarn-error.*
 
-# macOS
+# Operating system files
 .DS_Store
-*.pem
+Thumbs.db
+desktop.ini
 
-# local env files
-.env*.local
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
 
-# typescript
+# Supabase local files
+supabase/.branches/
+supabase/.temp/
+supabase/.profiles/
+
+# TypeScript cache
 *.tsbuildinfo
 
-example
+# Temporary files
+*.tmp
+*.temp
+*.bak
 
-# generated native folders
-/ios
-/android
+# Local IDE configuration
+.vscode/
+.idea/
+
+# Optional local AI tooling
+.claude/
+.agents/
+
+
+# # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# # dependencies
+# node_modules/
+
+# # Expo
+# .expo/
+# dist/
+# web-build/
+# expo-env.d.ts
+
+# # Native
+# .kotlin/
+# *.orig.*
+# *.jks
+# *.p8
+# *.p12
+# *.key
+# *.mobileprovision
+
+# # Metro
+# .metro-health-check*
+
+# # debug
+# npm-debug.*
+# yarn-debug.*
+# yarn-error.*
+
+# # macOS
+# .DS_Store
+# *.pem
+
+# # local env files
+# .env*.local
+
+# # typescript
+# *.tsbuildinfo
+
+# example
+
+# # generated native folders
+# /ios
+# /android

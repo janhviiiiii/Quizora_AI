@@ -6,17 +6,14 @@ import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 
 import { AnimatedSplashOverlay } from "@/components/animated-icon";
+import { AuthProvider } from "@/context/auth";
 
-// Prevent the native splash screen from hiding automatically.
 if (Platform.OS !== "web") {
   void SplashScreen.preventAutoHideAsync();
 }
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-
-  // Web: keep server rendering and initial browser rendering consistent.
-  // Native: use the device theme immediately.
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
@@ -30,15 +27,15 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={navigationTheme}>
-      {/* Existing animated splash screen */}
-      <AnimatedSplashOverlay />
+      <AuthProvider>
+        <AnimatedSplashOverlay />
 
-      {/* Application navigation */}
-      <Stack
-        screenOptions={{
-          headerShown: false,
-        }}
-      />
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

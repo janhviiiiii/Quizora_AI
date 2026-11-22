@@ -1,3 +1,4 @@
+// Landing Page for Quizora AI
 import { Ionicons } from "@expo/vector-icons";
 import { Link, Redirect } from "expo-router";
 import type { ElementRef } from "react";

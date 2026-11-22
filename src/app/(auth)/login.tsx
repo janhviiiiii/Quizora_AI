@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
 import type { ComponentRef } from "react";
-import { StyleSheet, Text } from "react-native";
+import { useRef, useState } from "react";
 import type { TextInput } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 import { Field, PrimaryButton, RoleToggle } from "@/components/auth-ui";
 import AuthScreen from "@/components/auth/auth-screen";
@@ -53,8 +53,13 @@ export default function Login() {
 
     try {
       await login(trimmedEmail, password, role);
-    } catch {
-      setLoginError("We couldn't log you in. Please try again.");
+    } catch (error) {
+      // Show actual Supabase errors on login and signup
+      setLoginError(
+        error instanceof Error
+          ? error.message
+          : "Unable to log in. Please try again.",
+      );
     } finally {
       submitting.current = false;
       setLoading(false);
